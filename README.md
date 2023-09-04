@@ -65,3 +65,47 @@
 Полученные коты отличаются от нашего заданного цветом шерсти и рисунком на ней.
 ### Изменение контекста
 Теперь посмотрим, как модель генерирует нашего кота в различных контекстах.
+#### Recontextualization
+Попробуем генерацию изображений по промтам вида "A photo of a [V] cat in a [place]".
+* "A photo of a [V] cat in a bath"
+  ![Bath](images/inference/Pic-A_photo_of_a_[V]_cat_in_a_bath.jpg)
+* "A photo of a [V] cat driving a car"
+  ![Driving](images/inference/Pic-A_photo_of_a_[V]_cat_driving_a_car.jpg)
+* "Pic-A photo of a [V] cat on a moon surface.jpg"
+  
+    ![Moon surface](Pic-A_photo_of_a_[V]_cat_on_a_moon_surface.jpg)
+* "A photo of a [V] cat in a snow."
+  ![Snow](images/inference/Pic-A_photo_of_a_[V]_cat_in_a_snow.jpg)
+  #### Property Modification
+  Попробуем повторить результаты статьи, где они скрещивали таргетный объект с другими животными. Вот несколько полученных изображений.
+  * "A photo of a [V] cat crossed with a hippo"
+    ![A photo of a V cat crossed with a hippo](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_hippo.jpg)
+* "A photo of a [V] cat crossed with a panda"
+  ![Panda](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_panda-1.jpg)
+  * "A photo of a [V] cat crossed with a koala"
+    ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_koala.jpg)
+  * "A photo of a [V] cat crossed with a lion"
+    ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_lion.jpg)
+    
+#### Expression modification
+* "A photo of a depressed [V] cat"
+  ![depressed](images/inference/Pic-A_photo_of_a_depressed_[V]_cat.jpg)
+* "A photo of a sad [V] cat"
+  ![sad](images/inference/Pic-A_photo_of_a_sad_[V]_cat.jpg)
+* "A photo of a happy [V] cat"
+  ![depressed](images/inference/Pic-A_photo_of_a_happy_[V]_cat.jpg)
+* "A photo of a screaming [V] cat"
+  ![screaming](images/inference/Pic-A_photo_of_a_screaming_[V]_cat.jpg)
+#### Novel View Synthesis 
+Попробуем получить другие ракурсы нашего кота.
+* "A photo of a [V] cat seen from the back"
+  ![back](images/inference/Pic-A_photo_of_a_[V]_cat_seen_from_the_back.jpg)
+* "A photo of a [V] cat seen from the bottom"
+  ![bottom](images/inference/Pic-A_photo_of_a_[V]_cat_seen_from_the_bottom.jpg)
+* "A photo of a [V] cat seen from the side"
+  ![side](images/inference/Pic-A_photo_of_a_[V]_cat_seen_from_the_side.jpg)
+* "A photo of a [V] cat seen from the top"
+  ![top](images/inference/Pic-A_photo_of_a_[V]_cat_seen_from_the_top.jpg)
+
+### Выводы
+Полностью повторить результаты оригинальной статьи не получилось. Объяснить это можно тем, что мы обучали LoRA, а не дообучали всю модель. К тому же можно было генерировать больше классовых изображений и возможно от этого получить большее разнообразие. Однако, удалось связать "[V]" в промте с конкретными параметрами объекта и получить изображения, сильно отличающиеся от данных в reference set. При этом не был смещен весь домен класса. В поисках лучшего результата можно поэкспериментировать с количеством шагов на обучении и на инференсе. Код можно найти в ноутбуке. Также можно поварьировать коэффициент, меняющий соотношение между Reconstruction Loss и Class-Specific Prior Preservation Loss.
