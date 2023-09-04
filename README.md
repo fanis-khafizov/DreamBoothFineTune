@@ -78,7 +78,7 @@
   ![Driving](images/inference/Pic-A_photo_of_a_[V]_cat_driving_a_car.jpg)
 * "Pic-A photo of a [V] cat on a moon surface.jpg"
   
-  ![Moon surface](Pic-A_photo_of_a_[V]_cat_on_a_moon_surface.jpg)
+  ![Moon surface](images/inference/Pic-A_photo_of_a_[V]_cat_on_a_moon_surface.jpg)
 * "A photo of a [V] cat in a snow."
   
   ![Snow](images/inference/Pic-A_photo_of_a_[V]_cat_in_a_snow.jpg)
