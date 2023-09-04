@@ -41,6 +41,7 @@
 * Property Modification — изменение качеств объекта
   ![Property Modification](images/property_modification.png)
 
+
 ## Дообучение LoRA под генерацию своих объектов
 В качестве домена я выбрал фотографии кота своего друга. Вот несколько из них:
 ![Cat](/train_data/instance/1.png)
@@ -57,12 +58,14 @@
 ![LoRAGuidance](mages/inference/LoRAGuidance.png)
 При значениях больше 9 становится хуже качество изображений, появляются артефакты. А при значениях меньше 6 изображения достаточно похожи на таковые из референса. Выберем оптимальным значение GUIDANCE равное 7.
 Теперь зная хорошие значения на инференсе, попробуем погенерировать изображения с разными промтами.
+
 ### Проверка на переобучение всего домена "cat"
 Чтобы убедиться, что наша модель не забыла, как выглядят коты в общем случае, запустим генерацию изображений несколько раз на промте "A photo of a cat". Вот полученные картинки:
 ![Cat1](images/inference/Pic-A_photo_of_a_cat-1.jpg)
 ![Cat2](images/inference/Pic-A_photo_of_a_cat-2.jpg)
 ![Cat3](images/inference/Pic-A_photo_of_a_cat-3.jpg)
 Полученные коты отличаются от нашего заданного цветом шерсти и рисунком на ней.
+
 ### Изменение контекста
 Теперь посмотрим, как модель генерирует нашего кота в различных контекстах.
 #### Recontextualization
@@ -72,21 +75,19 @@
 * "A photo of a [V] cat driving a car"
   ![Driving](images/inference/Pic-A_photo_of_a_[V]_cat_driving_a_car.jpg)
 * "Pic-A photo of a [V] cat on a moon surface.jpg"
-  
-    ![Moon surface](Pic-A_photo_of_a_[V]_cat_on_a_moon_surface.jpg)
+  ![Moon surface](Pic-A_photo_of_a_[V]_cat_on_a_moon_surface.jpg)
 * "A photo of a [V] cat in a snow."
   ![Snow](images/inference/Pic-A_photo_of_a_[V]_cat_in_a_snow.jpg)
-  #### Property Modification
-  Попробуем повторить результаты статьи, где они скрещивали таргетный объект с другими животными. Вот несколько полученных изображений.
-  * "A photo of a [V] cat crossed with a hippo"
-    ![A photo of a V cat crossed with a hippo](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_hippo.jpg)
+#### Property Modification
+Попробуем повторить результаты статьи, где они скрещивали таргетный объект с другими животными. Вот несколько полученных изображений.
+* "A photo of a [V] cat crossed with a hippo"
+  ![A photo of a V cat crossed with a hippo](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_hippo.jpg)
 * "A photo of a [V] cat crossed with a panda"
   ![Panda](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_panda-1.jpg)
-  * "A photo of a [V] cat crossed with a koala"
-    ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_koala.jpg)
-  * "A photo of a [V] cat crossed with a lion"
-    ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_lion.jpg)
-    
+* "A photo of a [V] cat crossed with a koala"
+  ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_koala.jpg)
+* "A photo of a [V] cat crossed with a lion"
+  ![Koala](images/inference/Pic-A_photo_of_a_[V]_cat_crossed_with_a_lion.jpg)
 #### Expression modification
 * "A photo of a depressed [V] cat"
   ![depressed](images/inference/Pic-A_photo_of_a_depressed_[V]_cat.jpg)
